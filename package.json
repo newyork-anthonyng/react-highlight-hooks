@@ -7,13 +7,20 @@
     "test": "jest",
     "test.watch": "jest --watch"
   },
-  "keywords": ["react", "highlight", "hooks", "words", "text"],
+  "keywords": [
+    "react",
+    "highlight",
+    "hooks",
+    "words",
+    "text"
+  ],
   "author": "Anthony Ng <newyork.anthonyng@gmail.com> (http://anthonyng.me)",
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
     "@testing-library/react-hooks": "^3.4.2",
     "babel-jest": "^26.6.3",
+    "codecov": "^3.8.1",
     "jest": "^26.6.3",
     "prettier": "^2.1.2",
     "react-test-renderer": "^17.0.1"
