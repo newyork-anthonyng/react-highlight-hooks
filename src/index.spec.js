@@ -205,3 +205,33 @@ it("should update when text to search is updated", () => {
     ]
   `);
 });
+
+it("should not error when text to search is undefined", () => {
+  expect(() => {
+    const { result } = renderHook(() =>
+      useHighlighter(getProps({ textToSearch: undefined }))
+    );
+
+    expect(result.current.chunks).toMatchInlineSnapshot(`Array []`);
+  }).not.toThrow();
+});
+
+it("should handle when search terms are undefined", () => {
+  expect(() => {
+    const { result } = renderHook(() =>
+      useHighlighter(getProps({ searchTerms: undefined }))
+    );
+
+    expect(result.current.chunks).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "active": false,
+          "end": 11,
+          "highlight": false,
+          "start": 0,
+          "text": "hello world",
+        },
+      ]
+    `);
+  }).not.toThrow();
+});

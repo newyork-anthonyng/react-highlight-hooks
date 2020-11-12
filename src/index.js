@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React from "react";
 import { findAll } from "highlight-words-core";
 
 export function useHighlighter(props) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [searchTerms, setSearchTerms] = useState(props.searchTerms);
-  const [textToSearch, setTextToSearch] = useState(props.textToSearch);
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [searchTerms, setSearchTerms] = React.useState(props.searchTerms || "");
+  const [textToSearch, setTextToSearch] = React.useState(props.textToSearch);
 
   const searchWords = searchTerms.split(" ");
 
