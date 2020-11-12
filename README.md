@@ -11,14 +11,94 @@
 [![PRs Welcome][pull-request-badge]](http://makeapullrequest.com)
 
 # react-highlight-hooks
+A React hook to highlight words.
 
-## Tutorial
+Inspired by [react-highlight-words](https://github.com/bvaughn/react-highlight-words)
 
-## How-to Guide
+## Getting started
+`npm install --save react-highlight-hooks`
 
-## Explanation
+```js
+import React from "react";
+import { useHighlighter } from "react-highlight-hooks";
 
-## Reference
+function App() {
+    const {
+        textToSearch,
+        setTextToSearch,
+        searchTerms,
+        setSearchTerms,
+        activeIndex,
+        setActiveIndex,
+        totalHighlights,
+        chunks,
+    } = useHighlighter({
+        textToSearch: "Hello World",
+        searchTerms: "hello",
+    });
+
+    // ...
+}
+```
+
+## API
+`useHighlighter` is a React hook that returns the following:
+
+| Name | Description | Type |
+| --- | --- | --- |
+| textToSearch | This is the body of text that you will be highlighting words from | String |
+| setTextToSearch | This is a function to update `textToSearch` | Function |
+| searchTerms | This is a space-separated list of words that you are searching for in the `textToSearch` | String |
+| setSearchTerms | This is a function to update `searchTerms` | Function |
+| activeIndex | This is the index of the currently-active highlighted word | Number |
+| setActiveIndex | This is a function to update `activeIndex` | Function |
+| totalHighlights | This is the number of words highlighted in `textToSearch` | Number |
+| [chunks](#chunks) | This is an array of object which describe the matches found | Array |
+
+### Chunks
+`chunks` is an array of object which describes the matches found. The objects have the following keys:
+
+| Name | Description | Type |
+| --- | --- | --- |
+| active | If this item is highlighted and is active, this is true | Boolean
+| start | This is the index from the `textToSearch` where this chunk of text begins | Number |
+| end | This is the index from the `textToSearch` where this chunk of text ends | Number |
+| highlight | If this chunk of text is highlighted, this is true | Boolean |
+| text | This is the chunk of text, which can be derived from the `start` and `end` indexes | String |
+
+#### Example chunks
+```js
+import React from "react";
+import { useHighlighter } from "react-highlight-hooks";
+
+function App() {
+    const { chunks } = useHighlighter({
+        textToSearch: "Hello World",
+        searchTerms: "hello",
+    });
+
+    console.log(chunks);
+    /*
+    [
+        {
+            highlight: true,
+            active: true,
+            start: 0,
+            end: 5,
+            text: 'Hello'
+        },
+        {
+            highlight: false,
+            active: false,
+            start: 5,
+            end: 11,
+            text: ' world'
+        }
+    ]
+    */
+}
+```
+
 
 [codecov]: https://codecov.io/gh/newyork-anthonyng/react-highlight-hooks
 [codecov-badge]: https://img.shields.io/codecov/c/github/newyork-anthonyng/react-highlight-hooks/master.svg
