@@ -7,9 +7,9 @@
     "test": "jest",
     "test.watch": "jest --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react", "highlight", "hooks", "words", "text"],
+  "author": "Anthony Ng <newyork.anthonyng@gmail.com> (http://anthonyng.me)",
+  "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
     "@testing-library/react-hooks": "^3.4.2",
